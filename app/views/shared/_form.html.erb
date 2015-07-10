@@ -1,0 +1,96 @@
+<h1 align="center">Registration</h1>
+<%= form_for @user  do |f| %>
+<% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@user.errors.count, "error") %>
+      </h2>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+  <div class="row">
+  <div class ="col-md-4">
+  <div class="form-group">
+   <%= f.label :First_Name%>
+   <%= f.text_field :First_Name ,:required => true,class:"form-control" %>
+   </div>
+   </div>
+  <div class="col-md-4">
+  <%= f.label :Middle_Name%>
+  <%= f.text_field :Middle_Name,class:"form-control"%>
+  </div>
+  <div class="col-md-4">
+  <%= f.label :Last_Name%>
+  <%= f.text_field :Last_Name, :required => true,class:"form-control"%>
+  </div>
+  </div>
+ <div class="row">
+ <div class="col-md-4">
+  <%= f.label :Email%>
+  <%= f.text_field :Email ,:required => true,class:"form-control"%>
+  </div>
+  <div class="col-md-4">
+  <%= f.label :Logid,'Login ID' %>
+  <%= f.text_field :Logid,class:"form-control" %>
+  </div>
+  <div class="col-md-4">
+  <%= f.label :Password,'Password' %>
+  <%= f.password_field :Password, :required => true,class:"form-control" %>
+  </div>
+  </div>
+   <div class="row">
+ <div class="col-md-4">
+  <%= f.label :Password_confirmation%>
+  <%= f.password_field :Password_confirmation,class:"form-control" %>
+  </div>
+   <div class="col-md-4">
+  <%= f.label :Employee_ID%>
+  <%= f.text_field :Employee_ID,class:"form-control"%>
+  </div>
+   <div class="col-md-4">
+  <%= f.label :Date_of_Birth%>
+  <%= f.text_field :Date_of_Birth,:required => true,class:"form-control",id:"datepicker2"%>
+  </div>
+  </div>
+
+  <div class="row">
+  <div class="col-md-4">
+  <%= f.label :Gender%>
+  <%= f.select(:Gender, options_for_select([['Male'], ['Female']]),class:"form-control") %>
+  </div>
+ <div class="col-md-4">     
+  <%= f.label :Time_Zone%>
+  <%= f.time_zone_select(:Time_Zone, ActiveSupport::TimeZone.us_zones,class:"form-control") %>
+  </div>
+ <div class="col-md-4">
+  <%= f.label :Designation %>
+ <%= f.collection_select(:designation_id, @designations, :id, :name) %> 
+  </div>
+  </div>
+
+  <div class="row">
+  <div class="col-md-4">
+  <%= f.label :Date_of_Joining%>
+  <%= f.text_field(:Date_of_Joining,:required => true,class:"form-control",id:"datepicker3") %>
+  </div>
+  <div class="col-md-4">
+  <%= f.label :Education%>
+  <%= f.text_area :Education,class:"form-control"%>
+  </div>
+   <div class="col-md-4">
+  <%= f.label :Comments%>
+  <%= f.text_area :Comments,class:"form-control"%>
+   </div>
+   </div>
+
+
+
+  <div class="row">
+  <div class="col-md-4">
+  <%= f.label :Work_Phone%>
+  <%= f.text_field :Work_Phone,:required => true ,class:"form-control"%>
+  </div>
