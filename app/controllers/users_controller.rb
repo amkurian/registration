@@ -15,6 +15,9 @@ end
 def show
 	@user = User.find(params[:id])
 end
+def index
+	@user = User.all
+end
 end
 private
 def user_params

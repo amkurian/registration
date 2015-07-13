@@ -1,2 +1,26 @@
+<div id = "wrapper">
+  <h3> Employee Details </h3><br>
+  <%= link_to "New User", new_user_path, :class => "btn btn-primary", :method => :get %><br> <br>
+  
 
- 
+  <table class = "table" border= '1'>
+
+    <tr>
+      <th> Name</th>
+      <th> User ID</th>
+      <th> Operations </th>
+    </tr>
+
+    <% @user.each do |f| %>
+
+      <tr>
+        <td><%= f.first_name %> <%= f.last_name %> </td>
+        <td><%= f.logid %> </td>
+        <td><%= link_to "Show", user_path(f.id)%>
+            <%= link_to "Edit", edit_user_path(f.id)%>
+            <%= link_to "Delete",user_path(f.id), method: :delete,data: { confirm: 'Are you sure?' }%>
+      </tr>
+    <% end %>
+  </table>
+<%= link_to('Logout', destroy_user_session_path, :method => :delete) %> 
+</div>
