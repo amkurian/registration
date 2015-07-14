@@ -1,7 +1,9 @@
 <div id = "wrapper">
   <h1> User Registration </h1>
   <h3> Employee Details </h3><br>
+  <% if can? :manage, @user%>
   <%= link_to "New User", new_admin_user_path, :class => "btn btn-primary", :method => :get %><br> <br>
+  <% end %>
   
 
   <table class = "table" border= '1'>
@@ -17,9 +19,15 @@
       <tr>
         <td><%= f.first_name %> <%= f.last_name %> </td>
         <td><%= f.logid %> </td>
-        <td><%= link_to "Show", admin_user_path(f.id)%>
+
+        <td>
+            <%= link_to "Show", admin_user_path(f.id)%>
+            <% if can? :update, @user%>
             <%= link_to "Edit", edit_admin_user_path(f.id)%>
+            <% end %>
+             <% if can? :destroy, @user%>
             <%= link_to "Delete", admin_user_path(f.id), method: :delete,data: { confirm: 'Are you sure?' }%>
+             <% end %>
       </tr>
     <% end %>
   </table>

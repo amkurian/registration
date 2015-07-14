@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
+load_and_authorize_resource	
 def new
 	@user = User.new
 	@designations = Designation.all
+	@role = Role.all
 end
 def create
 	@user =User.new(user_params)
@@ -9,6 +11,7 @@ def create
 	  	redirect_to @user	
 	else
 	    @designations = Designation.all
+	    	@role = Role.all
 		render new_user_path
 	end
 end
