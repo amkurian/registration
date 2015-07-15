@@ -7,7 +7,7 @@ class Ability
     if user.role.name == "admin"
       can :manage, :all
     elsif user.role.name == "user"
-      can :read, :all  
+      cannot :manage, :all  
     end
   end
 end
