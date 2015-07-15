@@ -56,4 +56,5 @@ class Admin::UsersController < ApplicationController
 		:employee_id, :date_of_birth, :gender, :time_zone, :designation_id, \
 		:date_of_joining, :education, :comments, :work_phone, :islock, :isactive,:reason,:role_id)
 	end
+	
 end

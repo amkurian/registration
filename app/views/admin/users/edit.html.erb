@@ -1,1 +1,8 @@
-<%= render 'form' %>
+<h1 align="center">Editing User</h1>
+<%= form_for [:admin,@user]  do |f| %>
+<%=render "shared/errorchecking" %>
+<%=render :partial => "shared/adminform", :locals=>{:f=>f}%>
+<p align="center">
+   <button class="btn btn-primary" type="submit">Update User</button>
+  </p>
+<% end %>
